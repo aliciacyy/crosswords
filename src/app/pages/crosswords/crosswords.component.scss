@@ -1,0 +1,106 @@
+.crosswords-main {
+  justify-content: center;
+
+  .crosswords-main__body {
+    text-align: center;
+  
+    .crosswords-main__row {
+      grid-template-columns: repeat(10, 30px);
+      grid-template-rows: 30px;
+      grid-gap: 1px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    
+      > div {
+        z-index: 1;
+
+        &.border-box {
+          outline: 1px solid gray;
+          cursor: pointer;
+        }
+
+        &.correct {
+          background-color: #6ee7b7;
+        }
+
+        &.wrong {
+          background-color: #fda4af;
+        }
+
+        &.highlight {
+          background-color: #cbd5e1;
+
+          &.current {
+            background-color: #94a3b8;
+          }
+        }
+
+        ::ng-deep .hint-number {
+          font-size: 8px;
+          float: left;
+          margin-left: 2px;
+          position: absolute;
+        }
+
+        ::ng-deep .letter {
+          line-height: 28px;
+        }
+      }
+    }
+  }
+
+  .crosswords-main__bottom {
+    margin-top: 8px;
+
+    .crosswords-hints {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .crosswords-letters {
+      display: grid;
+      grid-template-columns: repeat(6, auto);
+      justify-content: center;
+
+      .letter-key {
+        padding: 12px;
+        background-color: #334155;
+        color: white;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 2px;
+        width: 40px;
+        text-align: center;
+        cursor: pointer;
+        background-position: center;
+        transition: background 0.5s;
+      }
+
+      /* Ripple effect */
+      .letter-key:hover {
+        background: #334155 radial-gradient(circle, transparent 1%, #334155 1%) center/15000%;
+      }
+      .letter-key:active {
+        background-color: #64748b;
+        background-size: 100%;
+        transition: background 0s;
+      }
+    }
+
+  }
+
+  .crosswords-win {
+    margin-top: 16px;
+    text-align: center;
+
+    > img {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 4px;
+      max-width: 80px;
+    }
+  }
+}
+

@@ -1,0 +1,17 @@
+.main-app {
+  .header {
+    padding: 8px;
+    background-color: rgb(226 232 240);
+    text-align: center;
+
+    .sub {
+      font-size: 12px;
+    }
+  }
+
+  .main-app__body {
+    padding: 8px;
+    max-width: 1000px;
+  }
+}
+

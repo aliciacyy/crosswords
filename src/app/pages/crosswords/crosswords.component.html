@@ -1,0 +1,31 @@
+<div class="crosswords-main lg:flex">
+  <div class="crosswords-main__body">
+    <div *ngFor="let row of tableGrid; let i = index" class="crosswords-main__row grid">
+      <div id="{{i + '-' + j}}" *ngFor="let box of row; let j = index" [class.border-box] = "box === 1" 
+      [class.border-box] = "highlightActiveCell(i, j)" (click)="onBoxClick(box, $event)">
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!!selectedAnswer && !hasWon" class="crosswords-main__bottom">
+    <div class="crosswords-hints">
+      {{currentHint}}
+    </div>
+    <div class="crosswords-letters">
+      <ng-container *ngFor="let l of currentLetters" 
+        [ngTemplateOutlet]="letterKey"
+        [ngTemplateOutletContext]="{ letter: l }">
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="crosswords-win" *ngIf="hasWon">
+   <p class="text-lg font-bold">Congratulations!</p>
+    <p>Show this winning screen to claim your prize.</p>
+    <img src="assets/images/tada.png">
+  </div>
+</div>
+
+<ng-template #letterKey let-letter="letter">
+  <div class="letter-key" (click)="onLetterClick(letter)">{{letter}}</div>
+</ng-template>
