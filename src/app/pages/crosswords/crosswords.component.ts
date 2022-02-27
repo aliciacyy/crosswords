@@ -9,20 +9,14 @@ import { Answer, BoxCoordinates } from '../../models/model'
 export class CrosswordsComponent implements OnInit, AfterViewInit {
 
   tableGrid = [
-    [0,0,0,0,1,0,0,0,0,0],
+    [0,0,0,0,1,0,1,0,0,0],
     [0,1,1,1,1,1,1,1,1,0],
-    [0,0,0,0,1,0,0,0,0,0],
-    [0,0,0,0,1,0,0,0,0,0],
-    [1,1,1,1,1,0,0,0,0,0],
-    [0,0,0,0,1,0,0,0,0,0],
-    [0,0,0,0,1,0,0,1,0,0],
-    [0,0,1,1,1,1,1,1,1,0],
-    [0,0,0,0,0,0,0,1,0,0],
-    [0,0,0,0,0,0,0,1,0,0],
-    [0,0,1,0,0,0,0,1,0,0],
-    [0,1,1,1,1,1,1,1,1,1],
-    [0,0,1,0,0,0,0,1,0,0],
-    [0,0,1,0,0,0,0,1,0,0]
+    [0,0,0,0,1,0,1,0,0,0],
+    [0,1,0,0,1,0,1,0,1,0],
+    [1,1,1,1,1,0,1,0,1,0],
+    [0,1,0,0,1,0,0,0,1,0],
+    [0,1,0,0,1,0,0,0,1,0],
+    [0,0,1,1,1,1,1,1,1,0]
   ]
   answers: Answer[] = [];
   currentHint = '';
@@ -51,11 +45,11 @@ export class CrosswordsComponent implements OnInit, AfterViewInit {
   generateAnswers(): void{
     this.answers.push(new Answer(1, 'TIMEZONE', [[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[1,7],[1,8]], 'MaiMai, Pump It Up'));
     this.answers.push(new Answer(2, 'KEYCHRON', [[0,4],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4]], 'Mechanical, one each'));
-    this.answers.push(new Answer(3, 'MARCH', [[4,0],[4,1],[4,2],[4,3],[4,4]], 'Anniversary month'));
-    this.answers.push(new Answer(4, 'PENGUIN', [[7,2],[7,3],[7,4],[7,5],[7,6],[7,7],[7,8]], 'You caught two of these'));
-    this.answers.push(new Answer(5, 'BIDADARI', [[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7]], 'Our future home'));
-    this.answers.push(new Answer(6, 'MARIOKART', [[11,1],[11,2],[11,3],[11,4],[11,5],[11,6],[11,7],[11,8],[11,9]], 'DS game; you always win'));
-    this.answers.push(new Answer(7, 'MALA', [[10,2],[11,2],[12,2],[13,2]], 'Spicy & numb'));
+    this.answers.push(new Answer(3, 'HOUSE', [[0,6],[1,6],[2,6],[3,6],[4,6]], 'Bidadari'));
+    this.answers.push(new Answer(4, 'MARCH', [[4,0],[4,1],[4,2],[4,3],[4,4]], 'Anniversary month'));
+    this.answers.push(new Answer(5, 'KART', [[3,1],[4,1],[5,1],[6,1]], 'You always win at Mario ____'));
+    this.answers.push(new Answer(6, 'PENGUIN', [[7,2],[7,3],[7,4],[7,5],[7,6],[7,7],[7,8]], 'You caught two of these'));
+    this.answers.push(new Answer(7, 'BROWN', [[3,8],[4,8],[5,8],[6,8],[7,8]], 'Always with Cony'));
   }
 
   generateLetters() {
@@ -101,7 +95,6 @@ export class CrosswordsComponent implements OnInit, AfterViewInit {
   }
 
   onBoxClick(box: number, $event: any) {
-    console.log($event.currentTarget.id);
     const splitId = $event.currentTarget.id.split('-');
     const targetRow = Number(splitId[0]);
     const targetCol = Number(splitId[1]);
@@ -127,7 +120,6 @@ export class CrosswordsComponent implements OnInit, AfterViewInit {
       this.previousAnswer = JSON.parse(JSON.stringify(this.selectedAnswer));
       
       this.currentHint = this.selectedAnswer!.hint;
-      console.log(this.selectedAnswer);
 
       // highlight the word boxes
       this.selectedAnswer!.word.forEach((word) => {
